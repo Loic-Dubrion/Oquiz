@@ -1,0 +1,52 @@
+<%- include('../partials/header') %>
+
+
+<main class="container py-4">
+
+  <!-- Toast en cas d'erreur -->
+  <% if (locals.errorMsg) { %>
+  <div class="alert alert-danger" role="alert">
+    Une erreur s'est produite lors de l'enregistrement du niveau.
+    <%= errorMsg %>
+  </div>
+  <% } %>
+  
+    <!-- Toast en cas de réussite -->
+  <% if (locals.succesMsg) { %>
+  <div class="alert alert-success" role="alert">
+    <%= succesMsg %>
+  </div>
+  <% } %>
+
+  <h1 class="my-3">Tous les niveaux</h1>
+
+  <ul>
+
+    <!-- Level -->
+    <% tags.forEach(tag => { %>
+      <li>
+        <span class="badge bg-info p-3"><%= tag.name %></span>
+        <a class="btn btn-outline-info py-0 px-1 ms-3 fs-6 text-decoration-none" href="/admin/tags/<%= tag.id %>/update">ÉDITER</a>
+        
+        <!-- Seules les 'method' GET & POST sont autorisées dans les FORM html. Du coup on ruse, même si les endpoints résultants ne sont pas très REST friendly -->
+        <form class="d-inline" action="/admin/tags/<%= tag.id %>" method="POST">
+          <input class="btn btn-outline-danger py-0 px-1 ms-3 fs-6" type="submit" value="SUPPRIMER">
+        </form>
+      </li>
+    <% }) %>
+
+
+  </ul>
+
+  <h1 class="my-4">Ajouter un thème</h1>
+
+  <form class="mb-5" action="/admin/tags" method="POST">
+    <label class="form-label" for="tagName">Nom du thème</label>
+    <input class="form-control" type="text" name="tagName" id="tagName" required>
+    <input class="btn btn-primary mt-3" type="submit" value="Ajouter le niveau">
+  </form>
+
+</main>
+
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,16 @@
+<%- include("partials/header") %>
+
+<main class="container py-4">
+  <h1 class="my-3">Mon profil sur O'quiz</h1>
+
+  <label class="form-label h4" for="firstname"><%= user.firstname %></label>
+  <input class="form-control mb-4" type="text" disabled id="firstname" value="<%= user.firstname %>">
+
+  <label class="form-label h4" for="lastname"><%= user.lastname %></label>
+  <input class="form-control mb-4" type="text" disabled id="lastname" value="<%= user.lastname %>">
+
+  <label class="form-label h4" for="email"><%= user.email %></label>
+  <input class="form-control mb-4" type="text" disabled id="email" value="<%= user.email %>">
+</main>
+
+<%- include("partials/footer") %>

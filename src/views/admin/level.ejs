@@ -1,0 +1,27 @@
+<%- include("../partials/header") %>
+
+<main class="container py-4">
+
+    <!-- Toast en cas d'erreur -->
+    <% if (locals.errorMsg) { %>
+      <div class="alert alert-danger" role="alert">
+        Une erreur s'est produite lors de l'enregistrement du niveau.
+        <%= errorMsg %>
+      </div>
+      <% } %>
+
+  <h1 class="my-3">Editer un niveau</h1>
+
+  <form class="mb-5" action="/admin/levels/<%= level.id %>/update" method="POST">
+    <label class="form-label" for="name"><%= level.name %></label>
+    <input class="form-control" type="text" disabled value="<%= level.name %>">
+
+    <label class="form-label" for="name">Nouveau nom du niveau</label>
+    <input class="form-control" type="text" name="name" id="name" required>
+
+    <input class="btn btn-primary mt-3" type="submit" value="Modifier le niveau">
+  </form>
+
+</main>
+
+<%- include("../partials/footer") %>

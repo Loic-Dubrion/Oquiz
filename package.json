@@ -1,0 +1,32 @@
+{
+  "name": "s05-oquiz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "db:create": "psql -U oquiz -d oquiz -f ./data/import_tables.sql",
+    "db:seed": "psql -U oquiz -d oquiz -f ./data/import_datas.sql",
+    "db:reset": "npm run db:create && npm run db:seed"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "pg": "^8.10.0",
+    "sequelize": "^6.29.2",
+    "sqlite3": "^5.1.4",
+    "validator": "^13.9.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.33.0",
+    "nodemon": "^2.0.20"
+  },
+  "directories": {
+    "doc": "docs"
+  }
+}
